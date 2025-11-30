@@ -1,0 +1,30 @@
+version: 2
+updates:
+  # Monitorar dependências do npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+
+    # Agrupar atualizações de patch
+    groups:
+      patch-updates:
+        patterns:
+          - "*"
+        update-types:
+          - "patch"
+
+    # Labels personalizadas
+    labels:
+      - "dependencies"
+      - "security"
+
+    # Reviewers automáticos (opcional)
+    reviewers:
+      - "yugurimaru"
+
+    # Commit message prefix
+    commit-message:
+      prefix: "chore"
+      include: "scope"
